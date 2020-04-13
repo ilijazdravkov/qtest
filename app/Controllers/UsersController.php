@@ -70,4 +70,11 @@ class UsersController
             return view('users/register', ['errors' => $validation->errors()]);
         }
     }
+
+    public function logout()
+    {
+        Session::destroy();
+
+        Redirect::to('login');
+    }
 }
