@@ -15,6 +15,6 @@ class HomeController
             Redirect::to('login');
         }
 
-        echo 'Home Page';
+        return view('home/index');
     }
 }

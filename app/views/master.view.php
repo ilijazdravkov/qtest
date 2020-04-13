@@ -20,6 +20,10 @@ switch (\Core\Httpd\Request::uri()){
         $headerLink = '<li class="nav-item"><a href="/register" class="nav-link icon d-flex align-items-center"><i class="ion-ios-people mr-2"></i> Register</a></li>';
         $headerLabel = "LOGIN";
         break;
+    case 'home':
+        $headerLink = '<li class="nav-item"><a href="/logout" class="nav-link icon d-flex align-items-center"><i class="ion-ios-people mr-2"></i> Logout</a></li>';
+        $headerLabel = "HOME";
+        break;
     default:
         break;
 }
