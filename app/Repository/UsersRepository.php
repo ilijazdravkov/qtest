@@ -12,7 +12,7 @@ class UsersRepository implements UsersRepositoryContract
 
     public function findByEmail(string $email): ?stdClass
     {
-        $query = 'SELECT id FROM users WHERE email = :email';
+        $query = 'SELECT * FROM users WHERE email = :email';
 
         return DB::fetch($query, ['email' => $email]);
     }
@@ -26,5 +26,19 @@ class UsersRepository implements UsersRepositoryContract
         $params['password'] = Hash::make($data['password']);
 
         return DB::insert($query, $params);
+    }
+
+    public function login($email, $password): ?stdClass{
+        $user = static::findByEmail($email);
+
+        if($user){
+            if(Hash::verify($password, $user->password)){
+                return $user;
+            }else{
+                return null;
+            }
+        }else{
+            return null;
+        }
     }
 }

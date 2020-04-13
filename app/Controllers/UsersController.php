@@ -24,6 +24,24 @@ class UsersController
         return view('users/register');
     }
 
+    public function login(){
+        $data = Request::post();
+
+        $validation = UserValidator::validateLogin($data);
+
+        if(!$validation->fails()){
+            $user = $this->repository->login($data['email'], $data['password']);
+
+            if($user){
+                Redirect::to('home');
+            }else{
+                return view('users/login', ['unSuccessLoginMsg' => "Email\Password combination doesn't match."]);
+            }
+        }else{
+            return view('users/login', ['errors' => $validation->errors()]);
+        }
+    }
+
     public function register(){
         $data = Request::post();
 

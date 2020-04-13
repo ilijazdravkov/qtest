@@ -12,10 +12,23 @@ class UserValidator implements UserValidatorContract
         $validator = new Validator();
 
         $validation = $validator->make($data, [
-            'name'                  => 'required',
-            'email'                 => 'required|email',
-            'password'              => 'required|min:6|max:16',
-            'confirm_password'      => 'required|same:password',
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:16',
+            'confirm_password' => 'required|same:password',
+        ]);
+
+        $validation->validate();
+
+        return  $validation;
+    }
+
+    public static function validateLogin(array $data): Validation{
+        $validator = new Validator();
+
+        $validation = $validator->make($data, [
+            'email' => 'required|email',
+            'password' => 'required|min:6|max:16',
         ]);
 
         $validation->validate();

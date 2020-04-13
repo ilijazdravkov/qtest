@@ -22,7 +22,7 @@
                             if(isset($errors) && $errors->first('name')){
                                 ?>
                                 <div class="invalid-feedback" style="display: block">
-                                    <?php echo $errors->first('password'); ?>
+                                    <?php echo $errors->first('name'); ?>
                                 </div>
                                 <?php
                             }
@@ -39,7 +39,7 @@
                             if(isset($errors) && $errors->first('email')){
                                 ?>
                                 <div class="invalid-feedback" style="display: block">
-                                    <?php echo $errors->first('password'); ?>
+                                    <?php echo $errors->first('email'); ?>
                                 </div>
                                 <?php
                             }
