@@ -11,7 +11,7 @@ class Authenticate
 
     public function handle(){
         if(!Session::get('userLogged')){
-            Session::set('redirectTo', Request::uri());
+            Session::set('redirectTo', Request::route());
 
             Redirect::to('login');
         }

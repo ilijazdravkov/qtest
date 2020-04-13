@@ -4,12 +4,15 @@ namespace App\Controllers;
 
 use App\Business\Support\Validation\UserValidator;
 use App\Repository\UsersRepository;
+use App\Traits\Authenticatable;
 use Core\Httpd\Redirect;
 use Core\Httpd\Request;
 use Core\Session;
 
 class UsersController
 {
+    use Authenticatable;
+
     protected UsersRepository $repository;
 
     public function __construct(UsersRepository $repository)
@@ -37,7 +40,11 @@ class UsersController
                 Session::set('userLogged', true);
                 Session::set('userName', $user->name);
 
-                Redirect::to('home');
+                if(Session::get('redirectTo')){
+                    Redirect::to(Session::get('redirectTo'));
+                }else{
+                    Redirect::to('home');
+                }
             }else{
                 return view('users/login', ['unSuccessLoginMsg' => "Email\Password combination doesn't match."]);
             }

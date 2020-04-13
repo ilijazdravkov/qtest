@@ -16,7 +16,7 @@ class Request
         return $_GET;
     }
 
-    public static function uri(){
+    public static function route(){
         return trim(parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH), '/');
     }
 }

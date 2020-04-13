@@ -12,7 +12,7 @@
 $headerLink;
 $headerLabel;
 $headerLabelHref;
-switch (\Core\Httpd\Request::uri()){
+switch (\Core\Httpd\Request::route()){
     case 'register':
         $headerLink = '<li class="nav-item"><a href="/login" class="nav-link icon d-flex align-items-center"><i class="ion-ios-people mr-2"></i> Login</a></li>';
         $headerLabel = "REGISTER";

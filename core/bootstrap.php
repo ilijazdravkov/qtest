@@ -16,7 +16,7 @@ App::register('authMiddleware', new Authenticate());
 
 $router = Router::load('routes/routes.php'); // load routes file
 
-$router->direct(Request::uri(), Request::method()); // direct the request to the specified route
+$router->direct(Request::route(), Request::method()); // direct the request to the specified route
 
     function view($view, $data = []){
         $viewFileExt = '.view.php';

@@ -69,7 +69,7 @@ class Router
                 }
             }
 
-            if($middlewareAccessor){
+            if(isset($middlewareAccessor)){
                 $middleware = App::get($middlewareAccessor);
                 if($middleware){
                     $middleware->handle();
