@@ -88,7 +88,7 @@
                             </div>
                         </div>
                         <div class="footer text-center">
-                            <input id="submit" name="submit" type="submit" value="Log In" class="btn btn-primary">
+                            <input id="submit" type="submit" value="Log In" class="btn btn-primary">
                         </div>
                     </form>
                 </div>

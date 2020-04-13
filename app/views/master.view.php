@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="public/css/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="/public/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 <body>
 
 <?php
 $headerLink;
 $headerLabel;
+$headerLabelHref;
 switch (\Core\Httpd\Request::uri()){
     case 'register':
         $headerLink = '<li class="nav-item"><a href="/login" class="nav-link icon d-flex align-items-center"><i class="ion-ios-people mr-2"></i> Login</a></li>';
@@ -24,6 +25,11 @@ switch (\Core\Httpd\Request::uri()){
         $headerLink = '<li class="nav-item"><a href="/logout" class="nav-link icon d-flex align-items-center"><i class="ion-ios-people mr-2"></i> Logout</a></li>';
         $headerLabel = "HOME";
         break;
+    case 'search':
+        $headerLink = '<li class="nav-item"><a href="/logout" class="nav-link icon d-flex align-items-center"><i class="ion-ios-people mr-2"></i> Logout</a></li>';
+        $headerLabel = "SEARCH";
+        $headerLabelHref = "home";
+        break;
     default:
         break;
 }
@@ -31,7 +37,7 @@ switch (\Core\Httpd\Request::uri()){
 <div class="main-section">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" href="<?php if(isset($headerLabelHref)) {echo $headerLabelHref;}?>">
                 <?php
                 if(isset($headerLabel)) {
                     echo $headerLabel;

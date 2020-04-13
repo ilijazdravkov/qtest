@@ -12,6 +12,10 @@ class Request
         return $_POST;
     }
 
+    public static function get(){
+        return $_GET;
+    }
+
     public static function uri(){
         return trim(parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH), '/');
     }

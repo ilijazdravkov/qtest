@@ -7,4 +7,5 @@ $router->get('register', "UsersController@showRegister");
 $router->post('register', "UsersController@register");
 
 $router->get('home', "HomeController@index");
+$router->get('search', "SearchController@index");
 
