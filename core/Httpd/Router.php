@@ -2,6 +2,8 @@
 
 namespace Core\Httpd;
 
+use Core\Resolver;
+
 class Router
 {
     protected $routes = ['GET' => [], 'POST' => []];

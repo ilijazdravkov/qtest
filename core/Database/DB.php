@@ -36,8 +36,8 @@ class DB
         }
     }
 
-    private static function bindParams(PDOStatement $stmt, array $params): PDOStatement{
-        if(!isset($params)) return;
+    private static function bindParams(PDOStatement $stmt, array $params): ?PDOStatement{
+        if(!isset($params)) return null;
 
         foreach($params as $key=>$value){
             $stmt->bindParam(':'.$key, $value);
