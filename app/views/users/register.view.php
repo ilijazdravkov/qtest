@@ -9,37 +9,73 @@
                         </div>
                         <!-- <p class="description text-center">Or Be Classical</p> -->
                         <div class="card-body p-4">
+                            <?php
+                            if(isset($errors) && $errors->first('name')){
+                                ?>
+                                <div class="invalid-feedback" style="display: block">
+                                    <?php echo $errors->first('password'); ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="ion-ios-contact"></i>
-                      </span>
+                                  <span class="input-group-text">
+                                    <i class="ion-ios-contact"></i>
+                                  </span>
                                 </div>
-                                <input type="text" id="registerName" name="name" class="form-control" placeholder="Name...">
+                                <input type="text" id="registerName" name="name" class="form-control" placeholder="Name..." required>
                             </div>
+                            <?php
+                            if(isset($errors) && $errors->first('email')){
+                                ?>
+                                <div class="invalid-feedback" style="display: block">
+                                    <?php echo $errors->first('password'); ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="ion-ios-paper-plane"></i>
-                      </span>
+                                  <span class="input-group-text">
+                                    <i class="ion-ios-paper-plane"></i>
+                                  </span>
                                 </div>
-                                <input type="email" id="registerEmail" name="email" class="form-control" placeholder="Email...">
+                                <input type="email" id="registerEmail" name="email" class="form-control" placeholder="Email..." required>
                             </div>
+                            <?php
+                            if(isset($errors) && $errors->first('password')){
+                                ?>
+                                <div class="invalid-feedback" style="display: block">
+                                    <?php echo $errors->first('password'); ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="ion-ios-lock"></i>
-                      </span>
+                                  <span class="input-group-text">
+                                    <i class="ion-ios-lock"></i>
+                                  </span>
                                 </div>
-                                <input type="password" id="registerPassword" name="password" class="form-control" placeholder="Enter Password">
+                                <input type="password" id="registerPassword" name="password" class="form-control" placeholder="Enter Password" required>
                             </div>
+                            <?php
+                            if(isset($errors) && $errors->first('confirm_password')){
+                                ?>
+                                <div class="invalid-feedback" style="display: block">
+                                    <?php echo $errors->first('confirm_password'); ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        <i class="ion-ios-lock"></i>
-                      </span>
+                                  <span class="input-group-text">
+                                    <i class="ion-ios-lock"></i>
+                                  </span>
                                 </div>
-                                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm Password">
+                                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm Password" required>
                             </div>
                         </div>
                         <div class="footer text-center">
