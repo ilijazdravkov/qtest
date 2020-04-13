@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 ml-auto mr-auto">
                 <div class="card card-login py-4">
-                    <form class="form-register" method="" action="">
+                    <form class="form-register" method="POST" action="register">
                         <div class="card-header card-header-primary text-center">
                             <h4 class="card-title">Register</h4>
                         </div>
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="footer text-center">
-                            <a href="#" class="btn btn-primary">Register</a>
+                            <input id="submit" name="submit" type="submit" value="Log In" class="btn btn-primary">
                         </div>
                     </form>
                 </div>

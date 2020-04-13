@@ -1,4 +1,5 @@
 <?php
 
-$router->get('login', "UsersController@login");
-$router->get('register', "UsersController@register");
+$router->get('login', "UsersController@showLogin");
+$router->get('register', "UsersController@showRegister");
+$router->post('register', "UsersController@register");
