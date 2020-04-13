@@ -36,6 +36,18 @@ class DB
         }
     }
 
+    public static function fetchAll(string $query, array $params): ?array
+    {
+        $stmt = static::execute($query, $params);
+
+        if($stmt->rowCount() > 0){
+            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $result;
+        }else{
+            return null;
+        }
+    }
+
     public static function insert(string $query, array $params): string
     {
         $stmt = static::execute($query, $params);
@@ -67,7 +79,20 @@ class DB
         if(!isset($params)) return null;
 
         foreach($params as $key=>$value){
-            $stmt->bindValue(':'.$key, $value);
+            $paramType = gettype($value);
+
+            $dataType = PDO::PARAM_STR;
+
+            switch ($paramType)
+            {
+                case 'integer':
+                    $dataType = PDO::PARAM_INT;
+                    break;
+                default:
+                    break;
+            }
+
+            $stmt->bindValue(':'.$key, $value, $dataType);
         }
 
         return $stmt;

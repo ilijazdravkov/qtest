@@ -28,7 +28,7 @@ class UsersRepository implements UsersRepositoryContract
         return DB::insert($query, $params);
     }
 
-    public function login($email, $password): ?stdClass{
+    public function login(string $email, string $password): ?stdClass{
         $user = static::findByEmail($email);
 
         if($user){
@@ -40,5 +40,15 @@ class UsersRepository implements UsersRepositoryContract
         }else{
             return null;
         }
+    }
+
+    public function search(string $searchTerm, int $skip, int $take): ?array{
+        $query = 'SELECT id, name, email FROM users WHERE MATCH(name,email) AGAINST (:search_term) ORDER BY id LIMIT :skip, :take;';
+
+        $params['search_term'] = $searchTerm;
+        $params['skip'] = $skip;
+        $params['take'] = $take;
+
+        return DB::fetchAll($query, $params);
     }
 }
