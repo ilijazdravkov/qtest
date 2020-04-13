@@ -2,6 +2,15 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+                <?php
+                if(isset($emailExists)){
+                    ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php echo $emailExists; ?>
+                    </div>
+                    <?php
+                }
+                ?>
                 <div class="card card-login py-4">
                     <form class="form-register" method="POST" action="register">
                         <div class="card-header card-header-primary text-center">
@@ -75,7 +84,7 @@
                                     <i class="ion-ios-lock"></i>
                                   </span>
                                 </div>
-                                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm Password" required>
+                                <input type="password" id="confirmPassword" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
                             </div>
                         </div>
                         <div class="footer text-center">

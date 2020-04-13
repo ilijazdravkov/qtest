@@ -3,12 +3,17 @@
 namespace App\Controllers;
 
 use App\Business\Support\Validation\UserValidator;
+use App\Repository\UsersRepository;
+use Core\Httpd\Redirect;
 use Core\Httpd\Request;
 
 class UsersController
 {
-    public function __construct()
+    protected UsersRepository $repository;
+
+    public function __construct(UsersRepository $repository)
     {
+        $this->repository = $repository;
     }
 
     public function showLogin(){
@@ -26,6 +31,19 @@ class UsersController
 
         if(!$validation->fails()){
 
+            $user = $this->repository->findByEmail($data['email']);
+
+            if(!$user){
+                $user = $this->repository->create($data);
+
+                if($user){
+                    Redirect::to('login');
+                }else{
+                    return view('users/register', ['error' => 'Some error has occurred, please try again.']);
+                }
+            }else{
+                return view('users/register', ['emailExists' => 'Email already exists, try with another one.']);
+            }
         }else{
             return view('users/register', ['errors' => $validation->errors()]);
         }

@@ -15,10 +15,11 @@ class Connection implements ConnectionContract
             return new PDO(
                 $config['connection'].';dbname='.$config['name'],
                 $config['username'],
-                $config['password']
+                $config['password'],
+                $config['options'],
             );
         }catch (PDOException $exception){
-            throw new PDOException();
+            die($exception->getMessage());
         }
     }
 }
