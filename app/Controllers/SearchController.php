@@ -2,14 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Business\Support\Search;
-use App\Business\Support\Validation\SearchValidator;
-use App\Business\Support\Validation\UserValidator;
+use App\Support\Search;
+use App\Support\Validation\SearchValidator;
 use App\Repository\UsersRepository;
 use App\Traits\Authenticatable;
-use Core\Httpd\Redirect;
 use Core\Httpd\Request;
-use Core\Session;
 
 class SearchController
 {

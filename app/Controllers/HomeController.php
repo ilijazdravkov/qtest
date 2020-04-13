@@ -3,8 +3,6 @@
 namespace App\Controllers;
 
 use App\Traits\Authenticatable;
-use Core\Httpd\Redirect;
-use Core\Session;
 
 class HomeController
 {

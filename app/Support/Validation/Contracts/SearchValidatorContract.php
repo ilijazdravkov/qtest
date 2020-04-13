@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Business\Support\Contracts;
+namespace App\Support\Contracts;
 
 use Rakit\Validation\Validation;
 

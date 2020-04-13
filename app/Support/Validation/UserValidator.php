@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Business\Support\Validation;
+namespace App\Support\Validation;
 
-use App\Business\Support\Contracts\UserValidatorContract;
+use App\Support\Contracts\UserValidatorContract;
 use Rakit\Validation\Validation;
 use Rakit\Validation\Validator;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Business\Support;
+namespace App\Support;
 
 class Search
 {

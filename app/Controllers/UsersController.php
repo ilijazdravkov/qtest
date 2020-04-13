@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Business\Support\Validation\UserValidator;
+use App\Support\Validation\UserValidator;
 use App\Repository\UsersRepository;
 use App\Traits\Authenticatable;
 use Core\Httpd\Redirect;
