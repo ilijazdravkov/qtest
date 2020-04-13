@@ -4,8 +4,11 @@ use Core\Httpd\Router;
 use Core\Httpd\Request;
 use Core\Database\Connection;
 use Core\Database\DB;
+use Core\Session;
 
 DB::setConnection(Connection::make(require 'config/database.php')); // establish connection to db
+
+Session::start();
 
 $router = Router::load('routes/routes.php'); // load routes file
 

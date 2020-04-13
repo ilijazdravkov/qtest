@@ -6,6 +6,7 @@ use App\Business\Support\Validation\UserValidator;
 use App\Repository\UsersRepository;
 use Core\Httpd\Redirect;
 use Core\Httpd\Request;
+use Core\Session;
 
 class UsersController
 {
@@ -33,6 +34,9 @@ class UsersController
             $user = $this->repository->login($data['email'], $data['password']);
 
             if($user){
+                Session::set('userLogged', true);
+                Session::set('userName', $user->name);
+
                 Redirect::to('home');
             }else{
                 return view('users/login', ['unSuccessLoginMsg' => "Email\Password combination doesn't match."]);

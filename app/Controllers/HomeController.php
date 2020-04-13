@@ -9,6 +9,12 @@ class HomeController
 {
     public function index()
     {
+        if(!Session::get('userLogged')){
+            Session::set('redirectTo', 'home');
+
+            Redirect::to('login');
+        }
+
         echo 'Home Page';
     }
 }
