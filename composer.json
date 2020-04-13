@@ -4,5 +4,8 @@
       "App\\": "app",
       "Core\\": "core"
     }
+  },
+  "require": {
+    "rakit/validation": "^1.2"
   }
 }
