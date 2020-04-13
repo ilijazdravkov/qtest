@@ -6,27 +6,26 @@ use App\Business\Support\Search;
 use App\Business\Support\Validation\SearchValidator;
 use App\Business\Support\Validation\UserValidator;
 use App\Repository\UsersRepository;
+use App\Traits\Authenticatable;
 use Core\Httpd\Redirect;
 use Core\Httpd\Request;
 use Core\Session;
 
 class SearchController
 {
+    use Authenticatable;
+
     protected UsersRepository $usersRepository;
 
     public function __construct(UsersRepository $usersRepository)
     {
         $this->usersRepository = $usersRepository;
+
+        $this->middleware('authMiddleware', ['index']);
     }
 
     public function index()
     {
-        if(!Session::get('userLogged')){
-            Session::set('redirectTo', 'home');
-
-            Redirect::to('login');
-        }
-
         $data = Request::get();
 
         $validation = SearchValidator::validate($data);

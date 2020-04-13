@@ -2,7 +2,9 @@
 
 namespace Core\Httpd;
 
+use Core\App;
 use Core\Resolver;
+use Exception;
 
 class Router
 {
@@ -29,7 +31,7 @@ class Router
             return $this->callAction(...explode('@', $this->routes[$requestType][$uri]));// call the assigned controller action for the requested route
         }
 
-        throw new \Exception('Route not defined');
+        throw new Exception('Route not defined');
     }
 
     protected function callAction($controller, $action){
@@ -37,10 +39,42 @@ class Router
 
         $controller = (new Resolver())->resolve("$controller");// Instantiate new class object with automatic dependency injection
 
+        $this->callMiddleware($controller, $action);
+
         if(!method_exists($controller, $action)){// check the if the controller method exists
-            throw new \Exception("{$controller} action is not defined.");
+            throw new Exception("{$controller} action is not defined.");
         }
 
         return $controller->$action();// call the controller action
+    }
+
+    protected function callMiddleware($controller, $action){
+        $middlewareMethodName = 'getMiddlewares';
+
+        if(method_exists($controller, $middlewareMethodName)){
+            $middlewares = $controller->$middlewareMethodName();
+
+            $middlewareAccessor;
+
+            if($middlewares){
+                foreach ($middlewares as $key=>$value){
+                    if (is_array($value) || is_object($value)) {
+                        foreach ($value as $method) {
+                            if ($action == $method) {
+                                $middlewareAccessor = $key;
+                                break 2;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if($middlewareAccessor){
+                $middleware = App::get($middlewareAccessor);
+                if($middleware){
+                    $middleware->handle();
+                }
+            }
+        }
     }
 }
