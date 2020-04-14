@@ -28,7 +28,7 @@ class SearchController
         $validation = SearchValidator::validate($data);
 
         if(!$validation->fails()){
-            $searchTerm = $data['search'];
+            $searchTerm = Search::sanitize($data['search']);
 
             $take = Search::getResultsPerPage($data['show']);
             $skip = Search::skip($data['page'], $take);

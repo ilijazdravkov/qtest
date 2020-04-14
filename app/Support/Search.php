@@ -15,4 +15,8 @@ class Search
         // calculate how many rows to skip
         return ($page -1) * $rows;
     }
+
+    public static function sanitize(string $string): string{
+        return filter_var($string, FILTER_SANITIZE_STRING);
+    }
 }
