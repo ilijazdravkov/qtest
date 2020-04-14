@@ -8,6 +8,7 @@ $router->post('register', "UsersController@register");
 
 $router->get('logout', "UsersController@logout");
 
+$router->get('', "HomeController@index");
 $router->get('home', "HomeController@index");
 $router->get('search', "SearchController@index");
 

@@ -31,6 +31,9 @@ switch (\Core\Httpd\Request::route()){
         $headerLabelHref = "home";
         break;
     default:
+        $headerLink = '<li class="nav-item"><a href="/logout" class="nav-link icon d-flex align-items-center"><i class="ion-ios-people mr-2"></i> Logout</a></li>';
+        $headerLabel = "SEARCH";
+        $headerLabelHref = "home";
         break;
 }
 ?>
